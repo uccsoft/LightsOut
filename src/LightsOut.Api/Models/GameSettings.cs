@@ -7,7 +7,7 @@ namespace LightsOut.Api.Models
 {
     public class GameSettings
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int BoardSize { get; set; }
     }
