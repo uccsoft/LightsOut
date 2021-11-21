@@ -12,6 +12,6 @@ namespace LightsOut.Api.Models
         public string Name { get; set; }
         public int BoardSize { get; set; }
         [NotMapped]
-        public List<int> InitialState { get; set; }
+        public List<List<int>> InitialState { get; set; }
     }
 }

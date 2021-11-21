@@ -39,13 +39,21 @@ namespace LightsOut.Api.Controllers
                 return NotFound();
             }
 
-            //generate initial state of game
+            #region generate initial state of game
             var rng = new Random();
-            gameSettings.InitialState = new List<int>();
-            for (int i = 0; i < gameSettings.BoardSize * gameSettings.BoardSize; i++)
+            gameSettings.InitialState = new List<List<int>>();
+            for (int i = 0; i < gameSettings.BoardSize; i++)
             {
-                gameSettings.InitialState.Add(rng.Next(0, 2));
+                List<int> list = new List<int>();
+
+                for(int j = 0; j < gameSettings.BoardSize; j++)
+                {
+                    list.Add(rng.Next(0, 2));
+                }
+
+                gameSettings.InitialState.Add(list);
             }
+            #endregion
 
             return gameSettings;
         }
