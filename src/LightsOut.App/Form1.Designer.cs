@@ -36,7 +36,7 @@ namespace LightsOut.App
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(340, 28);
+            this.btnStart.Location = new System.Drawing.Point(361, 23);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 0;
@@ -48,6 +48,10 @@ namespace LightsOut.App
             // 
             this.dgvBoard.AllowUserToAddRows = false;
             this.dgvBoard.AllowUserToDeleteRows = false;
+            this.dgvBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvBoard.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvBoard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBoard.ColumnHeadersVisible = false;
             this.dgvBoard.Location = new System.Drawing.Point(21, 64);
@@ -57,6 +61,7 @@ namespace LightsOut.App
             this.dgvBoard.Size = new System.Drawing.Size(767, 365);
             this.dgvBoard.TabIndex = 1;
             this.dgvBoard.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBoard_CellClick);
+            this.dgvBoard.SelectionChanged += new System.EventHandler(this.dgvBoard_SelectionChanged);
             // 
             // Form1
             // 

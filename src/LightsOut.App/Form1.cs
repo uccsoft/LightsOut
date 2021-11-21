@@ -14,6 +14,9 @@ namespace LightsOut.App
 {
     public partial class Form1 : Form
     {
+        private readonly Color _lightOn = Color.FromArgb(142, 251, 142);
+        private readonly Color _lightOff = Color.FromArgb(0, 102, 0);
+
         public Form1()
         {
             InitializeComponent();
@@ -43,6 +46,7 @@ namespace LightsOut.App
                         Value = val
                     };
 
+                    dgvCell.Style.BackColor = (val == 1 ? _lightOn : _lightOff);
                     dgvRow.Cells.Add(dgvCell);
                     dgvCell.ReadOnly = true;
                 }
@@ -84,7 +88,13 @@ namespace LightsOut.App
 
         private void toggleCellValue(DataGridViewCell cell)
         {
-            cell.Value = ((int)cell.Value == 0 ? 1 : 0);
+            cell.Value = ((int)cell.Value == 1 ? 0 : 1);
+            cell.Style.BackColor = ((int)cell.Value == 1 ? _lightOn : _lightOff);
+        }
+
+        private void dgvBoard_SelectionChanged(object sender, EventArgs e)
+        {
+            dgvBoard.ClearSelection();
         }
     }
 }
