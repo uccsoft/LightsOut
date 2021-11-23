@@ -14,6 +14,9 @@ namespace LightsOut.App
 {
     public partial class Form1 : Form
     {
+        private readonly string _winMessage = "Congratulations you turned all the lights off! You win :)";
+        private readonly string _canNotStartProperlyMessage = "Game can not start properly. Please start the game again.";
+
         private readonly Color _lightOn = Color.FromArgb(142, 251, 142);
         private readonly Color _lightOff = Color.FromArgb(0, 102, 0);
 
@@ -28,6 +31,13 @@ namespace LightsOut.App
             var gameSettings = await lightsOutApiClient.GetGameSettings(1);
 
             initBoard(gameSettings);
+
+            if (isAllLightsOff())
+            {
+                MessageBox.Show(_canNotStartProperlyMessage);
+                dgvBoard.Rows.Clear();
+                return;
+            }
         }
 
         private void initBoard(GameSettings gameSettings)
@@ -84,6 +94,12 @@ namespace LightsOut.App
             {
                 toggleCellValue(dgvBoard.Rows[e.RowIndex].Cells[e.ColumnIndex + 1]);
             }
+
+            if (isAllLightsOff())
+            {
+                MessageBox.Show(_winMessage);
+                dgvBoard.Rows.Clear();
+            }
         }
 
         private void toggleCellValue(DataGridViewCell cell)
@@ -96,5 +112,27 @@ namespace LightsOut.App
         {
             dgvBoard.ClearSelection();
         }
+
+        private bool isAllLightsOff()
+        {
+            for (int row = 0; row < dgvBoard.RowCount; row++)
+            {
+                for(int col = 0; col < dgvBoard.ColumnCount; col++)
+                {
+                    int value = (int)dgvBoard.Rows[row].Cells[col].Value;
+
+                    if(value == 1)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+        //TODO Check if user wins after each cell click.
+        //TODO Select board size.
+        //TODO Include in the solution any documentation and test cases required and any tests written for this solution.
+        //TODO Sql scripts
     }
 }
