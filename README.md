@@ -9,7 +9,7 @@ Lights Out is a puzzle game developed in C#. The purpose of the game is to switc
 ## Getting Started
 
 ### Creating database tables
-Create a database called `LightsOut` on SQL Server. Run the Migration-Scripts.sql on the created db.
+Create a database called `LightsOut` on SQL Server. Run the Migration-Scripts.sql under \sql folder on the created db.
 
 ### Runnig Rest Api
 Set LightsOut.Api as start up project. Build the project. Run the LightsOut.Api.Exe under project \bin folder. Rest Api will be served under http://localhost:5000 base url. 
