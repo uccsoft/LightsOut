@@ -67,6 +67,7 @@ namespace LightsOut.App
                     };
 
                     dgvCell.Style.BackColor = (val == 1 ? _lightOn : _lightOff);
+                    dgvCell.Style.ForeColor = (val == 1 ? _lightOn : _lightOff);
                     dgvRow.Cells.Add(dgvCell);
                     dgvCell.ReadOnly = true;
                 }
@@ -116,6 +117,7 @@ namespace LightsOut.App
         {
             cell.Value = ((int)cell.Value == 1 ? 0 : 1);
             cell.Style.BackColor = ((int)cell.Value == 1 ? _lightOn : _lightOff);
+            cell.Style.ForeColor = ((int)cell.Value == 1 ? _lightOn : _lightOff);
         }
 
         private void dgvBoard_SelectionChanged(object sender, EventArgs e)
