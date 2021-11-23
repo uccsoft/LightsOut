@@ -16,6 +16,7 @@ namespace LightsOut.App
     {
         private readonly string _winMessage = "Congratulations you turned all the lights off! You win :)";
         private readonly string _canNotStartProperlyMessage = "Game can not start properly. Please start the game again.";
+        private readonly string _selectBoardSizeMessage = "Please select board size from dropdown list.";
 
         private readonly Color _lightOn = Color.FromArgb(142, 251, 142);
         private readonly Color _lightOff = Color.FromArgb(0, 102, 0);
@@ -27,8 +28,17 @@ namespace LightsOut.App
 
         private async void btnStart_Click(object sender, EventArgs e)
         {
+            if(cbBoardSize.SelectedIndex == -1)
+            {
+                MessageBox.Show(_selectBoardSizeMessage);
+                cbBoardSize.Focus();
+                return;
+            }
+
+
+            int settingsId = cbBoardSize.SelectedIndex + 1;
             LightsOutApiClient lightsOutApiClient = new LightsOutApiClient("localhost", "5000");
-            var gameSettings = await lightsOutApiClient.GetGameSettings(1);
+            var gameSettings = await lightsOutApiClient.GetGameSettings(settingsId);
 
             initBoard(gameSettings);
 
@@ -130,8 +140,8 @@ namespace LightsOut.App
 
             return true;
         }
-        //TODO Check if user wins after each cell click.
-        //TODO Select board size.
+        //TODO Check if user wins after each cell click. OK
+        //TODO Select board size. OK
         //TODO Include in the solution any documentation and test cases required and any tests written for this solution.
         //TODO Sql scripts
     }
