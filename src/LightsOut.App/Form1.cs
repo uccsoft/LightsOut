@@ -142,9 +142,5 @@ namespace LightsOut.App
 
             return true;
         }
-        //TODO Check if user wins after each cell click. OK
-        //TODO Select board size. OK
-        //TODO Include in the solution any documentation and test cases required and any tests written for this solution.
-        //TODO Sql scripts
     }
 }
