@@ -21,6 +21,13 @@ namespace LightsOut.Api.Controllers
             _context = context;
         }
 
+        // GET: api/GameSettings
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<GameSettings>>> GetGameSettings()
+        {
+            return await _context.GameSettings.ToListAsync();
+        }
+
         // GET: api/GameSettings/5
         [HttpGet("{id}")]
         public async Task<ActionResult<GameSettings>> GetGameSettings(int id)
