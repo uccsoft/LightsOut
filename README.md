@@ -18,3 +18,7 @@ http://localhost:5000/api/gamesettings/1
 
 ### Running Windows Forms Application
 Set LightsOut.App as start up project. Build the project. Run the LightsOut.App.Exe under project \bin folder.
+
+## Test Cases
+
+LightsOut rest api test cases is under tests folder.
